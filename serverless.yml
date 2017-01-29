@@ -1,0 +1,21 @@
+service: vellm-api
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  region: eu-central-1
+  stage: v1 
+
+functions:
+  hello:
+    handler: functions/vellums.get
+    events:
+      - http: 
+          path: users/{user}/vellums/{vellum}
+          method: get
+          integration: lambda
+          request:
+            parameters:
+              paths:
+                user: true
+                vellum: true

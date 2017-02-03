@@ -4,23 +4,19 @@ provider:
   name: aws
   runtime: nodejs4.3
   region: eu-central-1
-  stage: v1 
+  stage: ${env:VELLM_STAGE}
+
   iamRoleStatements:
     - Effect: Allow
       Action:
         - s3:*
       Resource: "*"
 
-custom:
-  bucket: markdown-prod
-
 functions:
   vellums_get:
     handler: functions/vellums.get
-    environment:
-      BUCKET: ${self:custom.bucket}
     events:
-      - http: 
+      - http:
           path: users/{user}/vellums/{vellum}
           method: get
           integration: lambda
@@ -29,3 +25,13 @@ functions:
               paths:
                 user: true
                 vellum: true
+
+resources:
+  Resources:
+    markdown:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: ${env:VELLM_BUCKET_MARKDOWN}
+
+plugins:
+  - serverless-offline

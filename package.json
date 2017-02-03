@@ -1,0 +1,24 @@
+{
+  "name": "vellm-api",
+  "version": "0.1.0",
+  "description": "Vellm API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vellm/api.git"
+  },
+  "author": "Henrik Fricke <hello@vellm.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vellm/api/issues"
+  },
+  "homepage": "https://github.com/vellm/api#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.9.0",
+    "serverless": "^1.6.1",
+    "serverless-offline": "^3.8.3"
+  }
+}

@@ -6,7 +6,8 @@ provider:
   region: ${env:AWS_REGION}
   stage: ${env:STAGE}
   environment:
-    BucketName: ${env:BUCKET_MARKDOWN}
+    BUCKET_MARKDOWN: ${env:BUCKET_MARKDOWN}
+    NODE_ENV: ${env:NODE_ENV}
 
   iamRoleStatements:
     - Effect: Allow

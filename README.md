@@ -1,5 +1,7 @@
 # Vellm API
 
+[![CircleCI](https://circleci.com/gh/vellm/api.svg?style=svg)](https://circleci.com/gh/vellm/api)
+
 ## Requirements
 
 * Node v4.3.2 - Why? Because it's the latest version AWS does support

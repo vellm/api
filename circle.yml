@@ -1,0 +1,5 @@
+deployment:
+  aws:
+    branch: master
+    commands:
+      - make api-deploy

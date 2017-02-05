@@ -3,8 +3,10 @@ service: vellm-api
 provider:
   name: aws
   runtime: nodejs4.3
-  region: eu-central-1
+  region: ${env:AWS_REGION}
   stage: ${env:STAGE}
+  environment:
+    BucketName: ${env:BUCKET_MARKDOWN}
 
   iamRoleStatements:
     - Effect: Allow

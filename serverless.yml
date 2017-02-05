@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs4.3
   region: eu-central-1
-  stage: ${env:VELLM_STAGE}
+  stage: ${env:STAGE}
 
   iamRoleStatements:
     - Effect: Allow
@@ -31,7 +31,7 @@ resources:
     markdown:
       Type: "AWS::S3::Bucket"
       Properties:
-        BucketName: ${env:VELLM_BUCKET_MARKDOWN}
+        BucketName: ${env:BUCKET_MARKDOWN}
 
 plugins:
   - serverless-offline

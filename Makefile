@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-DEVELOPMENT_MODE ?= true
+NODE_ENV ?= development
 REQUIRED_NODE_VERSION = v4.3.2
 STAGE ?= v1
 
@@ -10,10 +10,10 @@ FAKES3_ROOT = $(shell pwd)/.fakes3/
 FAKES3_TEST_INSTANCE = $(shell pwd)/development/
 
 # Export environment variables for serverless
-export VELLM_BUCKET_MARKDOWN = $(BUCKET_MARKDOWN)
-export VELLM_STAGE = $(STAGE)
-export VELLM_DEVELOPMENT_MODE = $(DEVELOPMENT_MODE)
-export VELLM_FAKES3_PORT = $(FAKES3_PORT)
+export BUCKET_MARKDOWN
+export STAGE
+export NODE_ENV
+export FAKES3_PORT
 
 fakes3-bootstrap: ## Create fakes3 instance for local development
 	@mkdir -p $(FAKES3_ROOT)
@@ -33,6 +33,7 @@ fakes3-run: fakes3-bootstrap ## Fire up fakes3 service
 api-serve: node-version-check ## Serve local instance of API
 	$(shell npm bin)/serverless offline
 
+api-deploy: NODE_ENV = production
 api-deploy: node-version-check ## Deploy API to AWS
 	$(shell npm bin)/serverless deploy
 

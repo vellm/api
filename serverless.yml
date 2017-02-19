@@ -35,6 +35,9 @@ resources:
       Type: "AWS::S3::Bucket"
       Properties:
         BucketName: ${env:BUCKET_MARKDOWN}
+    ApiGatewayMethodUsersUserVarVellumsVellumVarGet:
+      Properties:
+        AuthorizationType: AWS_IAM
 
 plugins:
   - serverless-offline

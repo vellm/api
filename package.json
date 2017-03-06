@@ -15,6 +15,6 @@
     "serverless-offline": "^3.9.1"
   },
   "engines": {
-    "node": "4.3.2"
+    "node": "4.5.0"
   }
 }

@@ -39,7 +39,7 @@ api-deploy: node-version-check ## Deploy API to AWS
 
 node-version-check:
 	@test $(shell node --version) = $(REQUIRED_NODE_VERSION) || \
-		{ echo "Node version $(shell node --version) is installed, but v4.3.2 is required!" ; exit 1 ; }
+		{ echo "Node version $(shell node --version) is installed, but v4.5.0 is required!" ; exit 1 ; }
 
 help:
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-12s\033[0m %s\n", $$1, $$2}'

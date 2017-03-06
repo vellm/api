@@ -1,19 +1,21 @@
 .DEFAULT_GOAL := help
 
 NODE_ENV ?= development
-REQUIRED_NODE_VERSION = v4.3.2
+REQUIRED_NODE_VERSION = v4.5.0
 STAGE ?= v1
 
 BUCKET_MARKDOWN = markdown-bucket
 FAKES3_PORT = 4567
 FAKES3_ROOT = $(shell pwd)/.fakes3/
 FAKES3_TEST_INSTANCE = $(shell pwd)/development/
+API_ENDPOINT = http://localhost:3000
 
 # Export environment variables for serverless
 export BUCKET_MARKDOWN
 export STAGE
 export NODE_ENV
 export FAKES3_PORT
+export API_ENDPOINT
 
 fakes3-bootstrap: ## Create fakes3 instance for local development
 	@mkdir -p $(FAKES3_ROOT)
@@ -29,6 +31,9 @@ fakes3-run: fakes3-bootstrap ## Fire up fakes3 service
 		-v $(FAKES3_ROOT):/fakes3_root \
 		-p $(FAKES3_PORT):4569 \
 		lphoward/fake-s3
+
+tests-dev:
+	$(shell npm bin)/mocha
 
 api-serve: node-version-check ## Serve local instance of API
 	$(shell npm bin)/serverless offline

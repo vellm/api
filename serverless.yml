@@ -17,7 +17,7 @@ provider:
 
 functions:
   vellums_get:
-    handler: functions/vellums.get
+    handler: functions/fetch/index.handler
     events:
       - http:
           path: users/{user}/vellums/{vellum}

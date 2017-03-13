@@ -1,18 +1,10 @@
 machine:
-  node:
-    version: 4.5.0
-
-dependencies:
-  override:
-    - yarn install
-  
-  post:
-    - make fakes3-run
-    - make api-serve
+  services:
+    - docker
 
 test:
   override:
-    - tests-dev
+    - make tests-ci
 
 deployment:
   aws:

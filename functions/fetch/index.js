@@ -1,6 +1,7 @@
 'use strict';
 
 const AWS = require('aws-sdk');
+const fetch = require('node-fetch');
 
 const s3Config = {
   signatureVersion: 'v4',
@@ -8,13 +9,13 @@ const s3Config = {
 };
 
 if (process.env.NODE_ENV === 'development') {
-  s3Config.endpoint = new AWS.Endpoint('http://localhost:' + process.env.FAKES3_PORT);
+  s3Config.endpoint = new AWS.Endpoint('http://fakes3:4569/');
   s3Config.s3ForcePathStyle = true;
 }
 
 const s3 = new AWS.S3(s3Config);
 
-module.exports.get = (event, context, callback) => {
+module.exports.handler = (event, context, callback) => {
   const params = {
     Bucket: process.env.BUCKET_MARKDOWN,
     Key: event.path.user.toLowerCase() + '/' + event.path.vellum.toLowerCase() + '.md'

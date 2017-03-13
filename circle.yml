@@ -2,6 +2,10 @@ machine:
   services:
     - docker
 
+dependencies:
+  override:
+    - sudo pip install --upgrade docker-compose
+
 test:
   override:
     - make tests-ci

@@ -1,7 +1,6 @@
 'use strict';
 
 const AWS = require('aws-sdk');
-const fetch = require('node-fetch');
 
 const s3Config = {
   signatureVersion: 'v4',

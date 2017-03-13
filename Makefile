@@ -23,7 +23,6 @@ tests-dev:
 
 tests-ci: fakes3boostrap
 	docker-compose up --build test
-	exit $(shell docker wait api_test_1)
 
 api-serve: ## Serve local instance of API
 	docker-compose up --build api

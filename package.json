@@ -10,6 +10,8 @@
     "aws-sdk": "^2.22.0"
   },
   "devDependencies": {
+    "aws-sdk-mock": "^1.6.1",
+    "jest": "^19.0.2",
     "mocha": "^3.2.0",
     "node-fetch": "^1.6.3",
     "serverless": "^1.8.0",

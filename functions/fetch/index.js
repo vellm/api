@@ -12,14 +12,13 @@ if (process.env.NODE_ENV === 'development') {
   s3Config.s3ForcePathStyle = true;
 }
 
-const s3 = new AWS.S3(s3Config);
-
 module.exports.handler = (event, context, callback) => {
+  const s3 = new AWS.S3(s3Config);
   const params = {
     Bucket: process.env.BUCKET_MARKDOWN,
     Key: event.path.user.toLowerCase() + '/' + event.path.vellum.toLowerCase() + '.md'
   };
-  s3.getObject(params).promise()
+  return s3.getObject(params).promise()
     .then(res => callback(null, {
       Markdown: res.Body.toString('base64'),
       LastModified: res.LastModified,

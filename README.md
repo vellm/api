@@ -15,14 +15,14 @@ How to use it:
 
 ```bash
 # Serve the API (available at http://localhost:3000/)
-npm run serverless:offline
+yarn run serverless:offline
 
 # Run unit tests
-npm run test:unit
+yarn run test:unit
 
 # Run integration tests (serverless offline have ro run)
-npm run test:integration:offline
+yarn run test:integration:offline
 
 # Start serverless offline, run integration tests, teardown serverless
-npm run serverless:offline:exec -- 'npm run test:integration:offline'
+yarn run serverless:offline:exec -- 'npm run test:integration:offline'
 ```

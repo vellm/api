@@ -6,15 +6,15 @@
   "author": "Henrik Fricke <hello@vellm.io>",
   "license": "MIT",
   "scripts": {
-    "test": "npm run test",
+    "test": "yarn run test:unit",
     "test:unit": "$(yarn bin)/jest test/unit",
     "test:integration": "$(yarn bin)/jest test/integration",
     "test:integration:offline": "API_ENDPOINT=http://localhost:3000 npm run test:integration -- $@",
-    "serverless:offline": "./node_modules/.bin/sls offline",
-    "serverless:offline:exec": "./node_modules/.bin/sls offline --exec $@",
+    "serverless:offline": "$(yarn bin)/sls offline",
+    "serverless:offline:exec": "$(yarn bin)/sls offline --exec",
     "deploy": "npm run deploy:dev",
-    "deploy:dev": "./node_modules/.bin/sls deploy",
-    "deploy:production": "./node_modules/.bin/sls deploy --stage prod"
+    "deploy:dev": "$(yarn bin)/sls deploy",
+    "deploy:production": "$(yarn bin)/sls deploy --stage prod"
   },
   "devDependencies": {
     "aws-sdk": "^2.28.0",
@@ -22,7 +22,7 @@
     "jest": "^19.0.2",
     "serverless": "^1.9.0",
     "serverless-offline": "^3.10.3",
-    "serverless-s3-local": "https://github.com/vellm/serverless-s3-local",
+    "serverless-s3-local": "git+ssh://git@github.com/vellm/serverless-s3-local.git",
     "url-parse": "^1.1.8"
   },
   "engines": {

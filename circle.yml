@@ -1,10 +1,10 @@
 machine:
   node:
-    version: 4.3.2
+    version: 4.5.0
 
 dependencies:
   pre:
-    - npm run -g yarn
+    - npm install -g yarn
   override:
     - yarn
 
@@ -12,7 +12,7 @@ test:
   override:
     - yarn test
   post:
-    - yarn run serverless:offline:exec -- 'npm run test:integration:offline'
+    - yarn run serverless:offline:exec -- \'yarn run test:integration:offline\'
 
 deployment:
   production:

@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Vellm API",
+  "main": "index.js",
+  "author": "Henrik Fricke <hello@vellm.io>",
+  "license": "MIT",
+  "scripts": {
+    "test": "npm run test",
+    "test:unit": "$(yarn bin)/jest test/unit",
+    "test:integration": "$(yarn bin)/jest test/integration",
+    "test:integration:offline": "API_ENDPOINT=http://localhost:3000 npm run test:integration -- $@",
+    "serverless:offline": "./node_modules/.bin/sls offline",
+    "serverless:offline:exec": "./node_modules/.bin/sls offline --exec $@",
+    "deploy": "npm run deploy:dev",
+    "deploy:dev": "./node_modules/.bin/sls deploy",
+    "deploy:production": "./node_modules/.bin/sls deploy --stage prod"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.28.0",
+    "aws-sdk-mock": "^1.6.1",
+    "jest": "^19.0.2",
+    "serverless": "^1.9.0",
+    "serverless-offline": "^3.10.3",
+    "serverless-s3-local": "https://github.com/vellm/serverless-s3-local",
+    "url-parse": "^1.1.8"
+  },
+  "engines": {
+    "node": "4.3.2"
+  }
+}

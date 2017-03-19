@@ -1,0 +1,13 @@
+machine:
+  node:
+    version: 4.3.2
+
+test:  
+  post:
+    - npm run serverless:offline:exec -- 'npm run test:integration:offline'
+
+deployment:
+  production:
+    tag: /v[0-9]+(\.[0-9]+)*$/
+    commands:
+      - npm run deploy:production

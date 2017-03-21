@@ -47,12 +47,20 @@ custom:
 
 functions:
   fetch:
-      handler: src/functions/fetch.handler
-      name: ${self:custom.prefix}-fetch
+    handler: src/functions/fetch.handler
+    name: ${self:custom.prefix}-fetch
+    events:
+      - http:
+          path: users/{user}/vellums/{vellum}
+          method: get
+
+  store:
+      handler: src/functions/store.handler
+      name: ${self:custom.prefix}-store
       events:
         - http:
-            path: users/{user}/vellums/{vellum}
-            method: get
+            path: users/{user}/vellums
+            method: post
 
 resources:
   Resources:
@@ -60,6 +68,11 @@ resources:
       Type: "AWS::S3::Bucket"
       Properties:
         BucketName: ${self:custom.bucketmarkdown}
+    
     ApiGatewayMethodUsersUserVarVellumsVellumVarGet:
+      Properties:
+        AuthorizationType: AWS_IAM
+    
+    ApiGatewayMethodUsersUserVarVellumsPost:
       Properties:
         AuthorizationType: AWS_IAM

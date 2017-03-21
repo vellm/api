@@ -25,10 +25,10 @@ describe('Store', () => {
             pathParameters: {
                 user: 'TestUsEr',
             },
-            body: JSON.stringify({
+            body: {
                 markdown: markdownStringEncoded,
                 fileName: 'test.md'
-            })
+            }
         };
 
         s3Mock = jest.fn((params, cb) => cb(null, s3PutObjectResponse));
@@ -66,9 +66,9 @@ describe('Store', () => {
                 pathParameters: {
                     user: 'TestUsEr',
                 },
-                body: JSON.stringify({
+                body: {
                     markdown: markdownStringEncoded
-                })
+                }
             };
 
             return handler(invalidEvent, null, (err, res) => {
@@ -81,9 +81,9 @@ describe('Store', () => {
                 pathParameters: {
                     user: 'TestUsEr',
                 },
-                body: JSON.stringify({
+                body: {
                     fileName: 'test.md'
-                })
+                }
             };
 
             return handler(invalidEvent, null, (err, res) => {

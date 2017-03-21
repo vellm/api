@@ -13,7 +13,7 @@ describe('Fetch', () => {
 
     describe('200', () => {
         it('when valid request taken', () => {
-            return request(url, 'GET').then((res) => {
+            return request(url).then((res) => {
                 expect(res.statusCode).toEqual(200);
             });
         });

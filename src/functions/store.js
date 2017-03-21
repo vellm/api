@@ -28,10 +28,9 @@ function s3RequestParams (data) {
 }
 
 function handler (event, context, callback) {
-    const body = JSON.parse(event.body);
     const s3 = new AWS.S3(s3Config);
 
-    return Promise.resolve({ body, user: event.pathParameters.user })
+    return Promise.resolve({ body: event.body, user: event.pathParameters.user })
         .then(validateRequestBody)
         .then(s3RequestParams)
         .then(params => s3.putObject(params).promise())
